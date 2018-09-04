@@ -3,7 +3,6 @@ class BooksController < ApplicationController
     books = Book.all
 
     respond_to do |format|
-      format.html { render html: books, status:200 }
       format.json { render json: books, status:200 }
     end
   end
