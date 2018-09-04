@@ -32,6 +32,6 @@ class BooksController < ApplicationController
   ##
 
   def params_book
-    params.permit(:name, :year, :code, :avaliable)
+    params.permit(:name, :code, :avaliable,:year)
   end
 end
