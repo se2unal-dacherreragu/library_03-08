@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new(params)
+    book = Book.new(params_book)
 
     if book.save
       respond_to do |format|
