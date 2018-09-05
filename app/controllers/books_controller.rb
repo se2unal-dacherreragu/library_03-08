@@ -22,10 +22,38 @@ class BooksController < ApplicationController
   end
 
   def show
-    book = Book.find(params[:id])
+    book = Book.find(params_book[:id])
 
     respond_to do |format|
       format.json { render json: book, status:200 }
+    end
+  end
+
+  def update
+    book = Book.find(params_book[:id])
+
+    if book.update(article_params)
+      respond_to do |format|
+        format.json { render json: book, status:201 }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: book.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    book = Book.find(params_book[:id])
+
+    if book.destroy(article_params)
+      respond_to do |format|
+        format.json { render json: book, status:200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render json: book.errors, status: :unprocessable_entity }
+      end
     end
   end
 
